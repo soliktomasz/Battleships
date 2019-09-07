@@ -56,7 +56,7 @@ namespace Battleships.Game
                     if (shotShip.Size == shotShip.Hits)
                     {
 
-                        Console.WriteLine($"{nameof(shotShip)} was destroyed!");
+                        Console.WriteLine($"{shotShip.GetType().Name} was destroyed!");
                         shipsToDestroy--;
                     }
 
@@ -88,9 +88,14 @@ namespace Battleships.Game
             }
 
             column = char.ToUpper(input[0]) - 64;
-            if (!int.TryParse(input.Substring(1), out row) || IsNotInRange(row) || IsNotInRange(column) || !char.IsLetter(input[0]))
+            if (!int.TryParse(input.Substring(1), out row) || !char.IsLetter(input[0]))
             {
                 Console.WriteLine("Please provide value in a proper format. For example 'A5'.");
+                return false;
+            }
+            else if(IsNotInRange(row) || IsNotInRange(column))
+            {
+                Console.WriteLine("Please provide value in range between 1 and 10 or A to J.");
                 return false;
             }
 
