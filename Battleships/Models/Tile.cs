@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Battleships.Board
+namespace Battleships.Models
 {
     /// <summary>
     /// The model for board tile.

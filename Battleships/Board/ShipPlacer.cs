@@ -53,6 +53,7 @@ namespace Battleships.Board
                     {
                         break;
                     }
+
                     tile.OccupyingShipType = ship.GetType();
 
                     tilesToOccupy.Add(tile);
