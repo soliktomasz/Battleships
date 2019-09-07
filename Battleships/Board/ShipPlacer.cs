@@ -1,4 +1,5 @@
-﻿using Battleships.Models;
+﻿using Battleships.Enums;
+using Battleships.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,21 +7,28 @@ using System.Linq;
 
 namespace Battleships.Board
 {
+    /// <summary>
+    /// Class responsible for placing ship on game board.
+    /// </summary>
     public static class ShipPlacer
     {
+        /// <summary>
+        /// Randomly puts ship on game board.
+        /// </summary>
+        /// <param name="board">The board on which ship can be placed.</param>
+        /// <param name="ship">The ship to place on board.</param>
         public static void PlaceShip(Board board, Ship ship)
         {
             var random = new Random();
-            var coordinates = new Point();
             var shipCanBePlaced = false;
             var orientation = GetRandomOrientation();
 
             while (!shipCanBePlaced)
             {
-                coordinates = new Point
+                var coordinates = new Point
                 {
-                    X = orientation == Orientation.Horizontal ? random.Next(ship.Size, 10) : random.Next(0, 10),
-                    Y = orientation == Orientation.Horizontal ? random.Next(0, 10) : random.Next(ship.Size, 10)
+                    X = orientation == Orientation.Horizontal ? random.Next(ship.Size, 10) : random.Next(1, 10),
+                    Y = orientation == Orientation.Horizontal ? random.Next(1, 10) : random.Next(ship.Size, 10)
                 };
 
                 var shipEnd = board.Tiles.First(t => t.Coordinates == coordinates);
@@ -37,15 +45,9 @@ namespace Battleships.Board
 
                 for (int i = 1; i < ship.Size; i++)
                 {
-                    Tile tile;
-                    if (orientation == Orientation.Horizontal)
-                    {
-                        tile = board.Tiles.First(t => t.Coordinates.Y == coordinates.Y && t.Coordinates.X == coordinates.X - i);
-                    }
-                    else
-                    {
-                        tile = board.Tiles.First(t => t.Coordinates.X == coordinates.X && t.Coordinates.Y == coordinates.Y - i);
-                    }
+                    Tile tile = orientation == Orientation.Horizontal
+                        ? board.Tiles.First(t => t.Coordinates.Y == coordinates.Y && t.Coordinates.X == coordinates.X - i)
+                        : board.Tiles.First(t => t.Coordinates.X == coordinates.X && t.Coordinates.Y == coordinates.Y - i);
 
                     if (tile.IsOccupied)
                     {

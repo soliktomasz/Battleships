@@ -1,10 +1,16 @@
 ﻿namespace Battleships.Models
 {
+    /// <summary>
+    /// The battleship model.
+    /// </summary>
+    /// <remarks><seealso cref="Ship"/>.</remarks>
     public class Battleship : Ship
     {
-        public Battleship() : base()
+        /// <summary>
+        /// Constructor for creating battleship.
+        /// </summary>
+        public Battleship()
         {
-            Name = "Battleship";
             Size = 5;
             Hits = 0;
         }
