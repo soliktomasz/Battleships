@@ -14,8 +14,6 @@ namespace Battleships.Board
         /// </summary>
         public List<Tile> Tiles { get; set; }
 
-        public int Size { get; set; }
-
         /// <summary>
         /// Constructor for creating new game board.
         /// </summary>
