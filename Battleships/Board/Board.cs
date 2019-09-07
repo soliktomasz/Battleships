@@ -14,17 +14,18 @@ namespace Battleships.Board
         /// </summary>
         public List<Tile> Tiles { get; set; }
 
+        public int Size { get; set; }
+
         /// <summary>
         /// Constructor for creating new game board.
         /// </summary>
-        /// <param name="size">The size of the board.</param>
-        public Board(int size)
+        public Board()
         {
             Tiles = new List<Tile>();
 
-            for (int i = 1; i <= size; i++)
+            for (int i = 1; i <= 10; i++)
             {
-                for (int j = 1; j <= size; j++)
+                for (int j = 1; j <= 10; j++)
                 {
                     Tiles.Add(new Tile
                     {

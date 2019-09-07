@@ -16,7 +16,7 @@ namespace Battleships.UnitTests.BoardTests
         {
             // Arrange
             var shipToPlace = new Destroyer();
-            var existingBoard = new Board.Board(10);
+            var existingBoard = new Board.Board();
 
             // Act
             ShipPlacer.PlaceShip(existingBoard, shipToPlace);
@@ -39,7 +39,7 @@ namespace Battleships.UnitTests.BoardTests
                 new Point {X = 5, Y = 2}
             };
 
-            var existingBoard = new Board.Board(10);
+            var existingBoard = new Board.Board();
             existingBoard.Tiles.Where(t => existingShipPlacement.Contains(t.Coordinates)).ToList().ForEach(t => t.IsOccupied = true);
 
             // Act
@@ -67,7 +67,7 @@ namespace Battleships.UnitTests.BoardTests
                 new Point {X = 2, Y = 5}
             };
 
-            var existingBoard = new Board.Board(10);
+            var existingBoard = new Board.Board();
             existingBoard.Tiles.Where(t => !freeshipSlot.Contains(t.Coordinates)).ToList().ForEach(t => t.IsOccupied = true);
 
             // Act

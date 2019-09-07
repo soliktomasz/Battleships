@@ -17,7 +17,7 @@ namespace Battleships.Game
         /// </summary>
         public static void StartGame()
         {
-            var board = new Board.Board(10);
+            var board = new Board.Board();
 
             var ships = new List<Ship>
             {

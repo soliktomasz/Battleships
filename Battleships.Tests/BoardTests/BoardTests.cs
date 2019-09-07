@@ -9,11 +9,8 @@ namespace Battleships.UnitTests.BoardTests
         [Test]
         public void Board_CorrectBoardSizeProvided_CreatesBoard()
         {
-            // Arrange
-            const int boardSize = 10;
-
             // Act
-            var board = new Board.Board(boardSize);
+            var board = new Board.Board();
 
             // Assert
             board.Tiles.Should().HaveCount(100, "board was created correctly");
